@@ -10,7 +10,7 @@ __meta__ = {
 }
 
 [node name="grouptop" type="HBoxContainer" parent="."]
-margin_right = 1920.0
+margin_right = 1024.0
 margin_bottom = 100.0
 
 [node name="groupbutton" type="TextureButton" parent="grouptop"]
@@ -30,10 +30,10 @@ align = 1
 
 [node name="groupbottom" type="MarginContainer" parent="."]
 margin_top = 104.0
-margin_right = 1920.0
+margin_right = 1024.0
 margin_bottom = 104.0
 custom_constants/margin_left = 100
 
 [node name="ExtensionContainer" type="VBoxContainer" parent="groupbottom"]
 margin_left = 100.0
-margin_right = 1920.0
+margin_right = 1024.0

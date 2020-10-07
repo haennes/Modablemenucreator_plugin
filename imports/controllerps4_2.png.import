@@ -2,19 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-
-path="res://.import/controllerps4_2.png-f36217b439b678b0e5325c70204c198a.stex"
-
+path="res://.import/controllerps4_2.png-6521794502bcd163d6ca48d0a8ce2f21.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-
-source_file="res://Modablemenucreator/imports/controllerps4_2.png"
-dest_files=[ "res://.import/controllerps4_2.png-f36217b439b678b0e5325c70204c198a.stex" ]
-
+source_file="res://imports/controllerps4_2.png"
+dest_files=[ "res://.import/controllerps4_2.png-6521794502bcd163d6ca48d0a8ce2f21.stex" ]
 
 [params]
 

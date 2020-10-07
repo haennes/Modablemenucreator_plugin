@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/phone_screen.png-a5a4e7c8276a6901a40c6dfd7616039e.stex"
+path="res://.import/phone_screen.png-f3061a1ad5934e0efbc29296d4a37339.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modablemenucreator/imports/phone_screen.png"
-dest_files=[ "res://.import/phone_screen.png-a5a4e7c8276a6901a40c6dfd7616039e.stex" ]
+source_file="res://imports/phone_screen.png"
+dest_files=[ "res://.import/phone_screen.png-f3061a1ad5934e0efbc29296d4a37339.stex" ]
 
 [params]
 

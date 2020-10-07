@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/collapse2.png-0af70ca619652bfbb0ee46da86695a8e.stex"
+path="res://.import/collapse2.png-1710ec17d7b9bdf140997417be477927.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modablemenucreator/imports/collapse2.png"
-dest_files=[ "res://.import/collapse2.png-0af70ca619652bfbb0ee46da86695a8e.stex" ]
+source_file="res://imports/collapse2.png"
+dest_files=[ "res://.import/collapse2.png-1710ec17d7b9bdf140997417be477927.stex" ]
 
 [params]
 

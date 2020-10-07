@@ -2,18 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/collapseimages.png-7fca84866a4eaaf84cdc1715f63ef445.stex"
-
+path="res://.import/collapseimages.png-4bb1e07f4daf8e29e90538144f57aa5a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-
-source_file="res://Modablemenucreator/imports/collapseimages.png"
-dest_files=[ "res://.import/collapseimages.png-7fca84866a4eaaf84cdc1715f63ef445.stex" ]
-
+source_file="res://imports/collapseimages.png"
+dest_files=[ "res://.import/collapseimages.png-4bb1e07f4daf8e29e90538144f57aa5a.stex" ]
 
 [params]
 

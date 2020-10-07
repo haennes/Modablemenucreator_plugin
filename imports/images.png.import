@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/images.png-fa94870e9dcb490bc49930a6b3c2b9df.stex"
+path="res://.import/images.png-e310f73df0c3ba8e03e75f99f906109d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modablemenucreator/imports/images.png"
-dest_files=[ "res://.import/images.png-fa94870e9dcb490bc49930a6b3c2b9df.stex" ]
+source_file="res://imports/images.png"
+dest_files=[ "res://.import/images.png-e310f73df0c3ba8e03e75f99f906109d.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pfeil2.png-d93d917423a3cc65f0aeaa33f5f797f3.stex"
+path="res://.import/pfeil2.png-9431cfae7324b028b80e3678ec03f1a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Modablemenucreator/imports/pfeil2.png"
-dest_files=[ "res://.import/pfeil2.png-d93d917423a3cc65f0aeaa33f5f797f3.stex" ]
+source_file="res://imports/pfeil2.png"
+dest_files=[ "res://.import/pfeil2.png-9431cfae7324b028b80e3678ec03f1a3.stex" ]
 
 [params]
 

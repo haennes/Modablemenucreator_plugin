@@ -249,8 +249,6 @@ func setup_keymapping_columns(list,vboxcontainerlist):
 		for y in list[z][0].size():
 			print("y:"+String(y))
 			var ylist = list[z][0][y][0]
-#			currentobjarray.append([])
-#			maxheightarray.append([])
 			Currentycontainer = HBoxContainer.new()
 			Currentycontainer.name = "y"+String(y)+"InputMaporproperty"+String(list[z][0][y][3])+"popup"+String(list[z][0][y][4])+"property("+String(list[z][0][y][2])+")group"+String(list[z][0][y][1])
 			Currentycontainer.set("anchor_right",1)
@@ -268,6 +266,7 @@ func setup_keymapping_columns(list,vboxcontainerlist):
 					
 				obj.name = "y"+String(y)+"x"+String(x)+"change"+String(ylist[x][3])+"valstep"+String(ylist[x][4])+"ifpassedorsteporfixed"+String(ylist[x][5])
 				Currentycontainer.add_child(obj)
+				
 				if obj is Button:
 					print("connected")
 					obj.toggle_mode = true
@@ -310,17 +309,32 @@ func setup_keymapping_columns(list,vboxcontainerlist):
 				Currentycontainer.alignment = BoxContainer.ALIGN_BEGIN
 				Currentycontainer.margin_left = 380
 			#for each y
-		for groupnum in ControlScroll.get_child_count():
-			for ycontainer in ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child_count():
-				var prop = Properties.get(ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).name.split("property(")[1].rsplit(")group")[0])
-				for xnode in ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).get_child_count():
-					if ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).get_child(xnode).name.split("change")[1].rsplit("valstep")[0] == "True":
-						ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).get_child(xnode).text = String(prop)
+			
+			for groupnum in ControlScroll.get_child_count():
+				for ycontainer in ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child_count():
+					var prop = Properties.get(ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).name.split("property(")[1].rsplit(")group")[0])
+					for xnode in ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).get_child_count():
+						if ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).get_child(xnode).name.split("change")[1].rsplit("valstep")[0] == "True":
+							ControlScroll.get_child(groupnum).get_child(1).get_child(0).get_child(ycontainer).get_child(xnode).text = String(prop)
 	isloaded = true
 	var packedscene = PackedScene.new()
-	packedscene.pack(get_tree().get_current_scene().get_node("TabContainer"))
+	print("savedScene")
+	get_node("TabContainer").print_tree_pretty()
+	set_childrens_owners_to($TabContainer)
+	print_tree_owners($TabContainer)
+	packedscene.pack(get_node("TabContainer"))
 	print(packedscene)
 	ResourceSaver.save(nodesavepath,packedscene)
+
+func print_tree_owners(node:Node):
+	print(node.name, " : " ,node.owner)
+	for i in node.get_child_count():
+		print_tree_owners(node.get_child(i))
+
+func set_childrens_owners_to(targetOwner : Node):
+	targetOwner.set_owner($TabContainer)
+	for i in targetOwner.get_child_count():
+		set_childrens_owners_to(targetOwner.get_child(i))
 
 func group_button_toggled(down,buttongroup):
 	print(buttongroup.name+"button_down:"+String(down))
