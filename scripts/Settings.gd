@@ -25,7 +25,9 @@ var errortranslation = ["Generic","Unavailable","Unconfigured","Unauthorized","P
 var groupinstance = preload("res://scenes/group.tscn")
 var tabinstance = preload("res://scenes/Tab.tscn")
 var nodesavepath = "res://scenes/TabContainersave.tscn"
+var Settingsarrayscript = load("res://scripts/Settingsarraysciptclear.gd")
 signal newinputorclosed
+var Settingsarraynode
 
 
 
@@ -49,99 +51,15 @@ func _ready():
 	#vboxcontainerlist    [x][properties[]]
 	$Mainmenu.set_visible(isinmainmenu)           # comment it in later after testing
 	$TabContainer.set_visible(!isinmainmenu)      # comment it in later after testing
-
+	Settingsarraynode = Node.new()
+	Settingsarraynode.set("name","Settingsarray")
+	Settingsarraynode.set_script(load("res://scripts/Settingsarrayscipt.gd"))
+	add_child(Settingsarraynode)
 	print(String(OS.get_time()))
-	var font = DynamicFont.new()
-	font.size = 32
-#list     [z][
-#			  [y][
-#				  [x][
-#					 type,yheigthadditional,properties[],iftextshouldbechangedtovalue,stepsize/changetovalue,usepassedvalue_useasstep_useasfixed
-#					],
-#				  group,property,InputMaptrue_propertyfalse,popup]
-#				properties[]]
-	Settingsarray = [ 
-						[ #TAB
-							[ #0
-								[ #y
-									[ #x
-										["Label",40,[["text","text"]],true,100,-1],
-										["Button",40,[["text","text"]],true,100,1]
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,-1],
-										["CheckBox",40,[["text","text"]],false,100,-1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Button",40,[["text","text"]],false,100,1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],false,100,1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],false,100,1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],false,100,1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],false,100,1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],false,100,1],
-									],"group3","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],false,100,1],
-									],"group","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],true,100,1],
-									],"group3","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],true,100,1],
-									],"group2","property1",false,true
-								],
-								[
-									[
-										["Label",40,[["text","text"]],true,100,1],
-										["Label",40,[["text","text"]],true,100,1],
-									],"group2","property1",false,true
-								],
-							],
-							[["scrolling_enabled",false]
-							]
-						]
-					]
+
+	Settingsarray = get_node("Settingsarray").Settingsarray
 	VBOXarray = [[["name","ExtraTab"],["anchor_right",1],["anchor_left",0.5]]]
-	setup_keymapping_columns(Settingsarray,VBOXarray)
+	setup_keymapping_columns(Settingsarray)
 	print(String(OS.get_time()))
 
 
@@ -228,24 +146,25 @@ func on_change(value, button):
 
 
 
-func setup_keymapping_columns(list,vboxcontainerlist):
+func setup_keymapping_columns(list):
 	print(list)
-
+	
+	
 # Creating the Settingsnodes
 
 	# for each Tab
 	for z in list.size():
 	# for each Tab
 		var Tab = tabinstance.instance()
-		print(list[z][0])
-		Tab.name = "Tab"+String(z)
 		for property in list[z][1].size():
-			print("set"+list[z][1][property][0]+"    TO    "+String(list[z][1][property][1]))
+			print("set"+list[z][1][property][0]+"    TO    "+String(list[z][1][property][1]))	
 			Tab.set(list[z][1][property][0],list[z][1][property][1])
-		$TabContainer.add_child(Tab)
+			print("tabexists NOT")
 		ControlScroll = Tab.get_child(0).get_node("Control")
+		print("ControllScroll : ",ControlScroll.name)
 		Tab.get_child(0).get_child(0).set("rect_min_size",Vector2(OS.get_real_window_size().x,40000))
 		# for each "line"
+		$TabContainer.add_child(Tab)
 		for y in list[z][0].size():
 			print("y:"+String(y))
 			var ylist = list[z][0][y][0]
@@ -324,7 +243,13 @@ func setup_keymapping_columns(list,vboxcontainerlist):
 	print_tree_owners($TabContainer)
 	packedscene.pack(get_node("TabContainer"))
 	print(packedscene)
-	ResourceSaver.save(nodesavepath,packedscene)
+	if  OK != ResourceSaver.save(nodesavepath,packedscene):
+		print("failed to save")
+	else:
+		print("savedscene")
+		Settingsarraynode.Settingsarray = []
+		Settingsarrayscript.take_over_path("res://scripts/Settingsarrayscipt.gd")
+		
 
 func print_tree_owners(node:Node):
 	print(node.name, " : " ,node.owner)
