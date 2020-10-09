@@ -16,12 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Modablemenucreator"
-config/icon="res://icon.png"
+config/icon="res://Modablemenucreator/icon.png"
 
 [autoload]
 
-Properties="*res://settingssaves/properties.gd"
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
+Properties="*res://Modablemenucreator/settingssaves/properties.gd"
